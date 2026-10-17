@@ -1,0 +1,253 @@
+.singularity {
+  min-height: 100vh;
+  background: #fcfbfd;
+  color: #17131d;
+}
+
+.brand-bar {
+  height: 4px;
+  background: linear-gradient(90deg, #a855f7, #ec4899, #fb923c);
+}
+
+.site-header {
+  width: min(100% - 48px, 1280px);
+  height: 80px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header-left,
+.site-nav {
+  display: flex;
+  align-items: center;
+}
+
+.header-left {
+  gap: 48px;
+}
+
+.logo {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border: 1px solid #e8e3ec;
+  border-radius: 12px;
+  background: white;
+  color: #211a29;
+  font-size: 12px;
+  font-weight: 650;
+  text-decoration: none;
+}
+
+.site-nav {
+  gap: 36px;
+}
+
+.site-nav a {
+  color: #77717f;
+  font-size: 14px;
+  font-weight: 550;
+  text-decoration: none;
+  transition: color 150ms ease;
+}
+
+.site-nav a:hover {
+  color: #8b36ce;
+}
+
+.profile-button,
+.back-button {
+  display: grid;
+  place-items: center;
+  border: 1px solid #e8e3ec;
+  border-radius: 50%;
+  color: #37313d;
+  background: white;
+}
+
+.profile-button {
+  width: 44px;
+  height: 44px;
+}
+
+.hero {
+  position: relative;
+  min-height: min(78vh, 760px);
+  padding: 40px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  isolation: isolate;
+}
+
+.hero-glow {
+  position: absolute;
+  z-index: -1;
+  top: 28%;
+  left: 50%;
+  width: min(580px, 90vw);
+  height: 290px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(191, 126, 238, 0.18), transparent 68%);
+  transform: translateX(-50%);
+  filter: blur(14px);
+}
+
+.hero h1 {
+  margin: 0;
+  background: linear-gradient(100deg, #6e36cc, #ce3cab 55%, #f18a52);
+  background-clip: text;
+  color: transparent;
+  font-size: clamp(56px, 9vw, 112px);
+  font-weight: 650;
+  letter-spacing: -0.065em;
+  line-height: 1.05;
+}
+
+.search-form {
+  width: min(100%, 576px);
+  min-height: 58px;
+  margin-top: 40px;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  border: 1px solid #e4dfe8;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.88);
+  box-shadow: 0 12px 36px rgba(35, 20, 48, 0.08);
+  transition: box-shadow 150ms ease, border-color 150ms ease;
+}
+
+.search-form:focus-within {
+  border-color: #b77cdb;
+  box-shadow: 0 0 0 4px rgba(172, 99, 211, 0.14);
+}
+
+.search-menu {
+  color: #716a78;
+  font-size: 17px;
+}
+
+.search-form input {
+  min-width: 0;
+  flex: 1;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: #211a29;
+  font: inherit;
+  font-size: 14px;
+}
+
+.search-form input::placeholder {
+  color: #928c98;
+}
+
+.search-submit {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #716a78;
+  cursor: pointer;
+  font: inherit;
+  font-size: 28px;
+  line-height: 1;
+}
+
+.result-section {
+  width: min(100% - 48px, 1280px);
+  margin: 0 auto;
+  padding-bottom: 96px;
+  scroll-margin-top: 24px;
+}
+
+.result-card {
+  padding: clamp(32px, 6vw, 64px);
+  border: 1px solid #e8e3ec;
+  border-radius: 28px;
+  background: white;
+}
+
+.back-button {
+  width: 44px;
+  height: 44px;
+  margin-bottom: 32px;
+  cursor: pointer;
+  font-size: 23px;
+}
+
+.result-card h2 {
+  margin: 0;
+  color: #201927;
+  font-size: clamp(44px, 6vw, 64px);
+  font-weight: 620;
+  letter-spacing: -0.055em;
+  line-height: 1.08;
+}
+
+.result-card p {
+  max-width: 320px;
+  margin: 24px 0 0;
+  color: #77717f;
+  font-size: 18px;
+  line-height: 1.65;
+}
+
+.download {
+  width: 128px;
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.download a {
+  width: 100%;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  background: #211a29;
+  color: white;
+  font-size: 23px;
+  text-decoration: none;
+}
+
+.download span {
+  font-size: 14px;
+  font-weight: 550;
+}
+
+@media (max-width: 520px) {
+  .site-header,
+  .result-section {
+    width: calc(100% - 32px);
+  }
+
+  .site-header {
+    height: 72px;
+  }
+
+  .header-left {
+    gap: 22px;
+  }
+
+  .site-nav {
+    gap: 18px;
+  }
+
+  .hero {
+    min-height: 72vh;
+  }
+
+  .search-form {
+    padding: 0 15px;
+    gap: 10px;
+  }
+}
