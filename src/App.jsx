@@ -141,10 +141,14 @@ function ClothingBrandPage() {
           your personal AI agents to your computer.
         </p>
         <div id="download" className="download">
-          <button type="button" disabled aria-label="Windows installer download link not configured">
+          <a
+            href="https://github.com/Prasshhchawda/singularityweb/releases/download/v1.0.0/Singularity.Setup.exe"
+            aria-label="Download Singularity Setup for Windows"
+            title="Download Singularity Setup.exe"
+          >
             ↓
-          </button>
-          <span>Windows installer (.exe) — download link coming soon</span>
+          </a>
+          <span>Download Singularity Setup.exe for Windows</span>
         </div>
       </section>
     </main>
