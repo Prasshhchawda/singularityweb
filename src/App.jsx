@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
 import singularityMark from './assets/singularity-mark.png'
 
@@ -7,9 +7,7 @@ function App() {
 
   const submit = (event) => {
     event.preventDefault()
-    if (query.trim()) {
-      window.location.assign('/clothing-brand')
-    }
+    window.location.assign('/clothing-brand#download')
   }
 
   if (window.location.pathname === '/clothing-brand') {
@@ -48,7 +46,6 @@ function App() {
             value={query}
             onChange={(event) => setQuery(event.target.value)}
             placeholder="search your niche bussines"
-            required
           />
           <button className="search-submit" type="submit" aria-label="Search">
             ⌕
@@ -115,6 +112,15 @@ function App() {
 }
 
 function ClothingBrandPage() {
+  useEffect(() => {
+    if (window.location.hash === '#download') {
+      document.getElementById('download')?.scrollIntoView({
+        behavior: 'smooth',
+        block: 'center',
+      })
+    }
+  }, [])
+
   return (
     <main className="singularity clothing-page">
       <div className="brand-bar" />
@@ -134,7 +140,7 @@ function ClothingBrandPage() {
           Get started with the Singularity Windows installer (.exe) and bring
           your personal AI agents to your computer.
         </p>
-        <div className="download">
+        <div id="download" className="download">
           <button type="button" disabled aria-label="Windows installer download link not configured">
             ↓
           </button>
