@@ -1,28 +1,19 @@
-import { useEffect, useRef, useState } from 'react'
+import { useState } from 'react'
 import './App.css'
+import singularityMark from './assets/singularity-mark.png'
 
 function App() {
   const [query, setQuery] = useState('')
-  const [showSecond, setShowSecond] = useState(false)
-  const secondRef = useRef(null)
-
-  useEffect(() => {
-    if (showSecond) {
-      secondRef.current?.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start',
-      })
-    }
-  }, [showSecond])
 
   const submit = (event) => {
     event.preventDefault()
-    setShowSecond(query.trim().toLowerCase().includes('clothing brand'))
+    if (query.trim()) {
+      window.location.assign('/clothing-brand')
+    }
   }
 
-  const backToSingularity = () => {
-    setShowSecond(false)
-    window.scrollTo({ top: 0, behavior: 'smooth' })
+  if (window.location.pathname === '/clothing-brand') {
+    return <ClothingBrandPage />
   }
 
   return (
@@ -31,7 +22,9 @@ function App() {
 
       <header className="site-header">
         <div className="header-left">
-          <a className="logo" href="#" aria-label="Singularity home">logo</a>
+          <a className="logo" href="#" aria-label="Singularity home">
+            <img src={singularityMark} alt="" />
+          </a>
           <nav className="site-nav" aria-label="Main navigation">
             <a href="#about">about</a>
             <a href="#contact">contact</a>
@@ -55,6 +48,7 @@ function App() {
             value={query}
             onChange={(event) => setQuery(event.target.value)}
             placeholder="search your niche bussines"
+            required
           />
           <button className="search-submit" type="submit" aria-label="Search">
             ⌕
@@ -62,26 +56,91 @@ function App() {
         </form>
       </section>
 
-      {showSecond && (
-        <section ref={secondRef} className="result-section">
-          <div className="result-card">
-            <button
-              type="button"
-              onClick={backToSingularity}
-              aria-label="Back to Singularity"
-              className="back-button"
-            >
-              ←
-            </button>
-            <h2>Clothing<br />brand</h2>
-            <p>download your persnal ai agent that ives in your computer</p>
-            <div className="download">
-              <a href="#" aria-label="Download">↓</a>
-              <span>from here</span>
-            </div>
-          </div>
-        </section>
-      )}
+      <section id="about" className="about-section" aria-labelledby="about-title">
+        <div className="about-content">
+          <p className="about-eyebrow">About Singularity</p>
+          <h2 id="about-title">AI-Powered Operations. Lower Costs.</h2>
+          <p>
+            Our platform brings together 7 AI agents to streamline product
+            management, projects, operations, logistics, inventory, and more.
+            Built for businesses looking to reduce operational costs, automate
+            manual work, and improve efficiency without adding unnecessary
+            overhead.
+          </p>
+          <p>
+            With a free initial trial, you can experience the platform firsthand
+            and discover how smarter operations can help your business save
+            costs and scale efficiently.
+          </p>
+        </div>
+      </section>
+
+      <section id="contact" className="contact-section" aria-labelledby="contact-title">
+        <div className="contact-content">
+          <p className="about-eyebrow">Get in touch</p>
+          <h2 id="contact-title">Contact</h2>
+          <p className="contact-intro">
+            For business inquiries, partnerships, or platform-related questions,
+            reach out through any of the channels below.
+          </p>
+          <ul className="contact-list">
+            <li>
+              <span>Brand Instagram</span>
+              <a href="https://instagram.com/singularity_app" target="_blank" rel="noreferrer">
+                @singularity_app
+              </a>
+            </li>
+            <li>
+              <span>Personal Instagram</span>
+              <a href="https://instagram.com/praharsh.chawda" target="_blank" rel="noreferrer">
+                @praharsh.chawda
+              </a>
+            </li>
+            <li>
+              <span>X (Twitter)</span>
+              <a href="https://x.com/praharsh_chawda" target="_blank" rel="noreferrer">
+                @praharsh_chawda
+              </a>
+            </li>
+            <li>
+              <span>Email</span>
+              <a href="mailto:praharshchhawda@gmail.com">praharshchhawda@gmail.com</a>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+    </main>
+  )
+}
+
+function ClothingBrandPage() {
+  return (
+    <main className="singularity clothing-page">
+      <div className="brand-bar" />
+      <header className="clothing-page-header">
+        <a className="clothing-back-link" href="/" aria-label="Back to home">
+          <span aria-hidden="true">←</span>
+          <span>Back to home</span>
+        </a>
+        <a className="logo" href="/" aria-label="Singularity home">
+          <img src={singularityMark} alt="" />
+        </a>
+      </header>
+      <section className="clothing-page-content" aria-labelledby="clothing-title">
+        <p className="about-eyebrow">7 AI agents (compatible with all niches)</p>
+        <h1 id="clothing-title">Meet your AI team</h1>
+        <p>
+          Get started with the Singularity Windows installer (.exe) and bring
+          your personal AI agents to your computer.
+        </p>
+        <div className="download">
+          <button type="button" disabled aria-label="Windows installer download link not configured">
+            ↓
+          </button>
+          <span>Windows installer (.exe) — download link coming soon</span>
+        </div>
+      </section>
     </main>
   )
 }
